@@ -1,24 +1,33 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {reduxForm, Field} from 'redux-form'
+import handleSubmit from "redux-form/es/handleSubmit";
 
 class SearchForm extends Component {
     static propTypes = {
 
     };
 
-
     render(){
+		const {handleSubmit} = this.props;
     	return(
     		<div>
-				<input type = 'text' value = {this.props.value} onChange = {this.handleUserChange} />
-		    </div>
-	    )
-    }
-
-	handleUserChange = (ev) => {
-		if (ev.target.value.length > 10) return;
-		this.props.onChange(ev.target.value)
+				<form onSubmit={handleSubmit}>
+					<div>
+						<Field name="product" component='input' type='text'/>
+					</div>
+					<div>
+						<input type="submit" />
+					</div>
+				</form>
+			</div>
+		)
 	}
+
+
+
 }
 
-export default SearchForm
+export default reduxForm({
+	form: "search"
+})(SearchForm)

@@ -20,10 +20,11 @@ code {
 .container{
     width: 1000px;
     margin: 0 auto;
-    height: 10px;
 }
 
-
+.flexible{
+    display: flex;
+}
 
 
 
